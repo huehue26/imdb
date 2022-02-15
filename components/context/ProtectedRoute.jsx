@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useAuth } from "./AuthContext";
+import Loader from '../Loader'
 
 
 export function protectedRoute(Component) {
@@ -12,7 +13,7 @@ export function protectedRoute(Component) {
       route.replace("/user/login");
       return (
         <div className="w-full h-full flex justify-center items-center">
-          <div>Loading ...</div>
+          <Loader />
         </div>
       );
     }
@@ -29,7 +30,7 @@ export function publicRoute(Component) {
       route.replace("/");
       return (
         <div className="w-full h-full flex justify-center items-center">
-          <div>Loading ...</div>
+          <Loader />
         </div>
       );
     }

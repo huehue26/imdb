@@ -11,6 +11,11 @@ function NavBar() {
     const [searchValue, setSearchValue] = useState("");
     const route = useRouter();
     const { currentUser, logout } = useAuth()
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+    ];
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -37,6 +42,15 @@ function NavBar() {
         }
     };
 
+    const dropDownHandler = async (e) => {
+        console.log(e)
+        if (e === "Logout") {
+            await logout()
+        } else if (e == "Profile") {
+
+        }
+    }
+
     return (
         <div id="nav-bar" className={styles.nav_bar}>
             <Link href="/" passHref>
@@ -62,8 +76,14 @@ function NavBar() {
                 <button className={styles.btn_1}>
                     {currentUser ? (
                         <div className="flex justify-center items-center">
-                            <Link passHref href='/'>Profile</Link>
-                            <div onClick={logout}>Logout</div>
+                            <select
+                                onChange={(e) => dropDownHandler(e.target.value)}
+                                className="mt-1 block w-28 pl-3 pr-2 py-2 text-base bg-transparent border-gray-300 focus:outline-none focus:ring-gray-300 focus:border-gray-300 sm:text-sm rounded-md"
+                            >
+                                <option value="User">User</option>
+                                <option value="Profile">WatchList</option>
+                                <option value="Logout">Logout</option>
+                            </select>
                         </div>
                     ) : <Link passHref href='/user/login'>Sign In</Link>
                     }
