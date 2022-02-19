@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from '../styles/Home.module.css'
 import { BsFillStarFill, BsStar } from 'react-icons/bs'
+import Image from 'next/image'
 
 const image_path = "https://image.tmdb.org/t/p/original"
 
@@ -53,7 +54,9 @@ function Slider(props) {
                     <div className={styles.scroll_carousel_items} key={show.id}>
                         <div className={styles.image}>
                             <a href={`/show/${show.id}`} >
-                                <img src={image_path + show.poster_path} alt="Poster" />
+                                <div >
+                                    <Image src={image_path + show.poster_path} className={styles.imgs} alt="Poster" height="160%" width="100%" layout="responsive" placeholder="blur" blurDataURL />
+                                </div>
                             </a>
                         </div>
                         <div className={styles.details}>

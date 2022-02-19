@@ -4,6 +4,7 @@ import axios from 'axios'
 import styles from '../styles/Home.module.css'
 import { FaPlay } from 'react-icons/fa'
 import { BsInfoLg } from 'react-icons/bs'
+import Image from 'next/image'
 
 const image_base = "https://image.tmdb.org/t/p/original/"
 
@@ -75,13 +76,14 @@ function SlideShow(props) {
 
     return (
         <div className={styles.slideshow}>
-            {load ? <Loader /> : ""}
             {
                 !load ?
-                    <img src={show_image} alt="slideshow_image" className={styles.image} onLoad={() => {
-                        setImageLoaded(true)
-                    }} />
-                    : ""
+                    <div className="lg:h-screen w-screen sm:h-96">
+                        <Image src={show_image} alt="slideshow_image" className={styles.image} onLoad={() => {
+                            setImageLoaded(true)
+                        }} height="51%" width="94%" layout="responsive" placeholder="blur" blurDataURL />
+                    </div>
+                    : <Loader />
             }
             {
                 !load && imageLoaded ?
@@ -115,13 +117,13 @@ function SlideShow(props) {
                 !load && imageLoaded ?
                     <div className={styles.next_shows}>
                         <div>
-                            <img src={show_image_next_1} alt="slideshow_next_image" className={styles.image_next} />
+                            <Image src={show_image_next_1} alt="slideshow_next_image" className={styles.image_next} height="170px" width="320px" placeholder="blur" blurDataURL />
                         </div>
                         <div>
-                            <img src={show_image_next_2} alt="slideshow_next_image" className={styles.image_next} />
+                            <Image src={show_image_next_2} alt="slideshow_next_image" className={styles.image_next} height="170px" width="320px" placeholder="blur" blurDataURL />
                         </div>
                         <div>
-                            <img src={show_image_next_3} alt="slideshow_next_image" className={styles.image_next} />
+                            <Image src={show_image_next_3} alt="slideshow_next_image" className={styles.image_next} height="170px" width="320px" placeholder="blur" blurDataURL />
                         </div>
                     </div >
                     : ""
