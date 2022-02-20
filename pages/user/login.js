@@ -96,7 +96,7 @@ function Login() {
                         <div className="px-2 text-gray-200">OR</div>
                         <div className="w-5/12 h-px bg-gray-300"></div>
                     </div>
-                    <div className="flex justify-center items-center">
+                    <div className="flex justify-center items-center cursor-pointer">
                         <div
                             className="text-sky-600 flex justify-center items-center p-4"
                             onClick={facebookLoginHandler}
@@ -104,12 +104,12 @@ function Login() {
                             <FaFacebook size={40} />
                         </div>
                         <div
-                            className="flex justify-center items-center p-4"
+                            className="flex justify-center items-center p-4 cursor-pointer"
                             onClick={googleLoginHandler}
                         >
                             <FcGoogle size={40} />
                         </div>
-                        <div className="text-gray-200 flex justify-center items-center p-4" onClick={githubLoginHandler}>
+                        <div className="text-gray-200 flex justify-center items-center p-4 cursor-pointer" onClick={githubLoginHandler}>
                             <BsGithub size={40} />
                         </div>
                     </div>

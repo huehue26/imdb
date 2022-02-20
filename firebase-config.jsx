@@ -1,5 +1,6 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import { getFirestore } from "firebase/firestore";
 
 // const app = firebase.initializeApp({
 //   apiKey: process.env.FIREBASE_API_KEY,
@@ -34,8 +35,8 @@ const app = firebase.initializeApp({
   measurementId: "G-HWK2B1LYNV",
 });
 
-export const auth = app.auth()
-export const googleAuth = new firebase.auth.GoogleAuthProvider()
-export const facebookAuth=new firebase.auth.FacebookAuthProvider()
-export const githubAuth=new firebase.auth.GithubAuthProvider()
-// export const db=firebase.
+export const auth = app.auth();
+export const googleAuth = new firebase.auth.GoogleAuthProvider();
+export const facebookAuth = new firebase.auth.FacebookAuthProvider();
+export const githubAuth = new firebase.auth.GithubAuthProvider();
+export const db = getFirestore();
