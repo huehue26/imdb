@@ -13,7 +13,7 @@ export default function Home(props) {
           subHeading="This weeks top movie and TV"
           category="trending"
         />
-        <Slider
+        {/* <Slider
           apiKey={props.apiKey}
           heading="| Most Rated "
           subHeading="Show time is here"
@@ -30,7 +30,7 @@ export default function Home(props) {
           apiKey={props.apiKey}
           heading="| Comming soon"
           category="upcoming"
-        />
+        /> */}
       </MainLayout>
     </div>
   )

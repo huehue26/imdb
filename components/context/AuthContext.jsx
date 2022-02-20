@@ -1,5 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { auth, googleAuth,facebookAuth,githubAuth } from "../../firebase-config";
+import {
+  auth,
+  googleAuth,
+  facebookAuth,
+  githubAuth,
+} from "../../firebase-config";
 
 const AuthContext = React.createContext();
 
