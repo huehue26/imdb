@@ -23,7 +23,7 @@ function Page(props) {
     return (
         <>
             {shows.map(show =>
-                <Show show={show} />
+                <Show show={show} key={show.id} />
             )}
         </>
     )

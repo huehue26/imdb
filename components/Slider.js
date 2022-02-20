@@ -49,7 +49,7 @@ function Slider(props) {
                     <h4 className={styles.category_sub_sub_heading}>{props.subHeading}</h4>
                     <div className={styles.items}>
                         {shows.map(show =>
-                            <Show show={show} />)
+                            <Show show={show} key={show.id} />)
                         }
                     </div>
                 </div>
