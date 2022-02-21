@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from '../styles/Home.module.css'
 import Show from './Show'
-import { useAuth } from './context/AuthContext'
 
 function Slider(props) {
 
     const [shows, setShow] = useState([])
     const api_key = props.apiKey
-    const { currentUser } = useAuth()
 
     useEffect(async () => {
         var api_link = ""
@@ -42,10 +40,6 @@ function Slider(props) {
                 })
         }
     }, [props, api_key])
-
-    // useEffect(async () => {
-
-    // }, [api_key]);
 
     return (
         <div className={styles.category}>

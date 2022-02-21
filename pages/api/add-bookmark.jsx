@@ -1,5 +1,5 @@
 import { db } from "../../firebase-config";
-import { doc, collection, setDoc, getDoc } from "firebase/firestore";
+import { doc, collection, setDoc, getDoc, addDoc } from "firebase/firestore";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -13,17 +13,19 @@ export default async function handler(req, res) {
       const docSnap = await getDoc(doc2);
 
       var docData = [];
-      if (docSnap.data().val) {
+      if (docSnap.exists() && docSnap.data().val) {
         docData = docSnap.data().val;
+        docData.push(id);
+        await setDoc(doc(coll2, "id"), {
+          val: docData,
+        });
+        res.json({ message: "success" });
+      } else {
+        docData.push(id);
+        await setDoc(doc2, { val: docData }, { merge: true });
+        res.json({ message: "success" });
       }
-      docData.push(id);
-      console.log(docData);
-      await setDoc(doc(coll2, "id"), {
-        val: docData,
-      });
-      res.json({ message: "success" });
     } catch {
-      console.log("bye");
       res.json({ message: "error" });
     }
   }

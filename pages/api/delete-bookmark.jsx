@@ -21,13 +21,11 @@ export default async function handler(req, res) {
         }
         docData.splice(i, 1);
       }
-      console.log(docData);
       await setDoc(doc(coll2, "id"), {
         val: docData,
       });
       res.json({ message: "success" });
     } catch {
-      console.log("bye");
       res.json({ message: "error" });
     }
   }

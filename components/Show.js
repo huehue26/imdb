@@ -10,28 +10,33 @@ function Show(props) {
     const image_path = "https://image.tmdb.org/t/p/original"
     const { currentUser } = useAuth()
     const [marked, setMarked] = useState(false)
-    useEffect(async () => {
-        const response = await axios.post("/api/get-bookmark", {
-            userId: currentUser.uid,
-        });
-        const bookmark = response.data
-        if (bookmark && bookmark.marks) {
-            console.log(bookmark.marks)
-            for (var i = 0; i < bookmark.marks.length; i++) {
-                if (bookmark.marks[i] == show.id) {
-                    setMarked(true)
-                    break
+    const [change, setChange] = useState(false)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.post("/api/get-bookmark", {
+                userId: currentUser.uid,
+            });
+            const bookmark = response.data
+            if (bookmark && bookmark.marks) {
+                for (var i = 0; i < bookmark.marks.length; i++) {
+                    if (bookmark.marks[i] == show.id) {
+                        setMarked(true)
+                        break
+                    } else {
+                        setMarked(false)
+                    }
                 }
             }
         }
-    })
-    console.log(marked)
-
+        fetchData()
+    }, [change])
     const addBookMarkHandler = async (id) => {
         const response = await axios.post('/api/add-bookmark', {
             id: id,
             userId: currentUser.uid
         })
+        setChange(!change)
         return response.data
     }
 
@@ -40,12 +45,12 @@ function Show(props) {
             id: id,
             userId: currentUser.uid
         })
-        console.log(response.data)
+        setChange(!change)
         return response.data
     }
 
     return (
-        <div className={styles.scroll_carousel_items} key={show.id}>
+        <div className={styles.scroll_carousel_items} >
             <div className={styles.image}>
                 <a href={`/show/${show.id}`} >
                     <div >
@@ -62,7 +67,7 @@ function Show(props) {
                     <div className="flex justify-center items-center">
                         {marked ?
                             <button className="flex justify-center items-center text-yellow-500" onClick={() => removeBookMarkHandler(show.id)}>
-                                <BsBookmarkFill />
+                                <BsBookmarkFill color="yellow" />
                             </button> :
                             <button className="flex justify-center items-center text-gray-100" onClick={() => addBookMarkHandler(show.id)}>
                                 <BsBookmark />
