@@ -4,9 +4,11 @@ import styles from '../styles/Home.module.css'
 import axios from "axios"
 import { useAuth } from '../components/context/AuthContext'
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 function Show(props) {
     const { show } = props
+    const route = useRouter()
     const image_path = "https://image.tmdb.org/t/p/original"
     const { currentUser } = useAuth()
     const [marked, setMarked] = useState(false)
@@ -29,7 +31,9 @@ function Show(props) {
                 }
             }
         }
-        fetchData()
+        if (currentUser) {
+            fetchData()
+        }
     }, [change])
     const addBookMarkHandler = async (id) => {
         const response = await axios.post('/api/add-bookmark', {
@@ -65,19 +69,23 @@ function Show(props) {
                         <div> {show.vote_average}</div>
                     </div>
                     <div className="flex justify-center items-center">
-                        {marked ?
-                            <button className="flex justify-center items-center text-yellow-500" onClick={() => removeBookMarkHandler(show.id)}>
-                                <BsBookmarkFill color="yellow" />
-                            </button> :
-                            <button className="flex justify-center items-center text-gray-100" onClick={() => addBookMarkHandler(show.id)}>
-                                <BsBookmark />
-                            </button>
+                        {currentUser ? (
+                            marked ?
+                                <button className="flex justify-center items-center text-yellow-500" onClick={() => removeBookMarkHandler(show.id)}>
+                                    <BsBookmarkFill color="yellow" />
+                                </button> :
+                                <button className="flex justify-center items-center text-gray-100" onClick={() => addBookMarkHandler(show.id)}>
+                                    <BsBookmark />
+                                </button>
+                        ) : <button className="flex justify-center items-center text-gray-100" onClick={() => route.push('/user/login')}>
+                            <BsBookmark />
+                        </button>
                         }
                     </div>
                 </div>
                 <div className={styles.heading}>{show.original_title ? (show.original_title.length > 30 ? show.original_title.slice(0, 30) + " ..." : show.original_title) : (show.name && show.name.length > 30 ? show.name.slice(0, 30) + " ..." : show.name)}</div>
             </div>
-        </div>
+        </div >
     )
 }
 

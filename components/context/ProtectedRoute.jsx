@@ -1,13 +1,11 @@
 import { useRouter } from "next/router";
 import { useAuth } from "./AuthContext";
-import Loader from '../Loader'
-
+import Loader from "../Loader";
 
 export function protectedRoute(Component) {
   return function ProtectedRoute(props) {
     const { currentUser } = useAuth();
     const route = useRouter();
-    console.log(currentUser)
 
     if (!currentUser) {
       route.replace("/user/login");
