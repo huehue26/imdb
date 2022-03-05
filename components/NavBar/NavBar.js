@@ -47,13 +47,13 @@ function NavBar() {
         <img src="/imdb-logo.png" alt="logo" className="h-8 cursor-pointer" />
       </Link>
       <div className="pl-4 pr-4 flex justify-center items-center">
-        <div className="flex text-white justify-center items-center pr-4">
+        {/* <div className="flex text-white justify-center items-center pr-4">
           <div className="pr-3">
             {" "}
             <AiOutlineMenu />
           </div>
           <div className="text-lg"> Menu</div>
-        </div>
+        </div> */}
         <div className="w-128 flex justify-center items-center bg-white">
           <input
             placeholder="Search"
