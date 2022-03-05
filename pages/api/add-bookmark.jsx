@@ -1,5 +1,5 @@
 import { db } from "../../firebase-config";
-import { doc, collection, setDoc, getDoc, addDoc } from "firebase/firestore";
+import { doc, collection, setDoc, getDoc } from "firebase/firestore";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {

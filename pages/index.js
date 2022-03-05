@@ -1,6 +1,6 @@
-import MainLayout from '../components/Layouts/MainLayout'
-import Slider from '../components/Slider'
-import SlideShow from '../components/SlideShow'
+import MainLayout from "../components/Layouts/MainLayout";
+import Slider from "../components/Slider";
+import SlideShow from "../components/SlideShow";
 
 export default function Home(props) {
   return (
@@ -25,7 +25,9 @@ export default function Home(props) {
           subHeading="Top rated Action Movies"
           category="actionMovies"
         />
-        <h2 className="text-yellow-500 ml-20 text-2xl font-semibold mt-10 mb-5">Soon in your theatre</h2>
+        <h2 className="text-yellow-500 ml-20 text-2xl font-semibold mt-10 mb-5">
+          Soon in your theatre
+        </h2>
         <Slider
           apiKey={props.apiKey}
           heading="| Comming soon"
@@ -33,14 +35,14 @@ export default function Home(props) {
         />
       </MainLayout>
     </div>
-  )
+  );
 }
 
 export async function getStaticProps(context) {
-  const api_key = process.env.TMDB_API_KEY
+  const api_key = process.env.TMDB_API_KEY;
   return {
     props: {
-      apiKey: api_key
-    }
-  }
+      apiKey: api_key,
+    },
+  };
 }
