@@ -5,6 +5,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { useAuth } from "../../components/context/AuthContext";
 import { useRouter } from "next/router";
 import { publicRoute } from "../../components/context/ProtectedRoute";
+import Link from "next/link";
 
 function Login() {
   const [userEmail, setUserEmail] = useState("");
@@ -63,9 +64,9 @@ function Login() {
           </div>
           <div className="text-gray-300 flex justify-center items-center pt-4">
             Already have a account ?{" "}
-            <a href="/user/login" className="text-yellow-500 pl-2">
+            <Link href="/user/login" className="text-yellow-500 pl-2">
               LogIn
-            </a>
+            </Link>
           </div>
         </div>
       </div>

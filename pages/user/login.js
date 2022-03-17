@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Head from "next/head";
 import React, { useState } from "react";
 import { HiOutlineMail } from "react-icons/hi";
@@ -98,10 +99,10 @@ function Login() {
             </button>
           </div>
           <div className="text-gray-300 flex justify-center items-center pt-2">
-            Don't have a account?{" "}
-            <a href="/user/signup" className="text-yellow-500 pl-2">
+            Don&apos;t have a account?{" "}
+            <Link href="/user/signup" className="text-yellow-500 pl-2">
               SignUp
-            </a>
+            </Link>
           </div>
           <div className="flex items-center justify-center pt-5">
             <div className="w-5/12 h-px bg-gray-300"></div>
