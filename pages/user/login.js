@@ -97,6 +97,12 @@ function Login() {
               Log In
             </button>
           </div>
+          <div className="text-gray-300 flex justify-center items-center pt-2">
+            Don't have a account?{" "}
+            <a href="/user/signup" className="text-yellow-500 pl-2">
+              SignUp
+            </a>
+          </div>
           <div className="flex items-center justify-center pt-5">
             <div className="w-5/12 h-px bg-gray-300"></div>
             <div className="px-2 text-gray-200">OR</div>
